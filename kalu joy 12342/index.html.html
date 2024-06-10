@@ -1,0 +1,288 @@
+<!DOCTYPE html> 
+<html lang="en">
+     <head>   
+          <meta charset="UTF-8">   
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+             <title>Portfolio Website</title> 
+                 <link rel="stylesheet" href="kalujoy.css"> 
+                </head> 
+                <body>  
+                       <!-- Navigation Bar -->
+                       <nav>      
+                           <ul>  
+                                       <li><a href="#home">Home</a></li>        
+                                            <li><a href="#about">About</a></li>  
+                                                       <li><a href="#projects">Projects</a></li>       
+                                                             <li><a href="#contact">Contact</a></li>   
+                                                                  </ul>
+                                                                </nav> 
+ 
+    <!-- Hero Section -->
+ 
+    <section id="home" class="hero">  
+        <div class="hero-content">       
+                  <h1>Welcome to My Portfolio</h1>      
+                         <p>Showcasing my skills and projects</p>       
+                               <a href="#projects" class="btn">View Projects</a>      
+                               </div>    
+                             </section> 
+ 
+    <!-- About Me Section -->  
+       <section id="about" class="about">  
+               <div class="about-content">  
+                           <h1>About Me</h1> 
+                                       <h1><p>MY name is  KALU JOY NGOZI. I am from Abia state . I attended BELLS UNIVERSITY OF TECHNOLOGY.
+                                        I am a full time Programmer.I specialize on web designing, web programming, coding, and software developing.
+                                      I graduated from Advanced Frontend Certification Course from New Horizon. I am seeking for the positon of Senior
+                                       Frontened Developer in this company.  
+                                    </p></h1> 
+                                            </div>   
+                                          </section> 
+ 
+    <!-- Projects Section -->   
+      <section id="projects" class="projects">    
+             <div class="project-grid">          
+                   <!-- Project Cards will be populated dynamically -->     
+                    </div>  
+                    <div class="container">
+                        <h1 class="heading">Temperature Converter</h1>
+                        <div class="temp-container">
+                          <label for="celsius">Celsius:</label>
+                          <input
+                            onchange="computeTemp(event)"
+                            type="number"
+                            name="celsius"
+                            id="celsius"
+                            placeholder="Enter Temperature"
+                            class="input"
+                          />
+                        </div>
+                        <div class="temp-container">
+                          <label for="fahrenheit">Fahrenheit:</label>
+                          <input
+                            onchange="computeTemp(event)"
+                            type="number"
+                            name="fahrenheit"
+                            id="fahrenheit"
+                            placeholder="Enter Temperature"
+                            class="input"
+                          />
+                        </div>
+                        <div class="temp-container">
+                          <label for="kelvin">Kelvin:</label>
+                          <input
+                            onchange="computeTemp(event)"
+                            type="number"
+                            name="kelvin"
+                            id="kelvin"
+                            placeholder="Enter Temperature"
+                            class="input"
+                          />
+                        </div>
+                      </div>
+                      <script>
+                       'const celsiusEl = document.getElementById("celsius");
+                      const fahrenheitEl = document.getElementById("fahrenheit");
+                      const kelvinEl = document.getElementById("kelvin");
+                      
+                      function computeTemp(event) {
+                        const currentValue = +event.target.value;
+                      
+                        switch (event.target.name) {
+                          case "celsius":
+                            kelvinEl.value = (currentValue + 273.32).toFixed(2);
+                            fahrenheitEl.value = (currentValue * 1.8 + 32).toFixed(2);
+                            break;
+                          case "fahrenheit":
+                            celsiusEl.value = ((currentValue - 32) / 1.8).toFixed(2);
+                            kelvinEl.value = ((currentValue - 32) / 1.8 + 273.32).toFixed(2);
+                            break;
+                          case "kelvin":
+                            celsiusEl.value = (currentValue - 273.32).toFixed(2);
+                            fahrenheitEl.value = ((currentValue - 273.32) * 1.8 + 32).toFixed(2);
+                            break;
+                          default:
+                            break;
+                        }
+                      }
+                      </script>
+
+<h1>Rock Paper Scissors Game</h1>
+<p>Choose your move:</p>
+<div class="buttons">
+    <button id="rock">&#x1F44A;</button>
+    <button id="paper">&#x1f590;</button>
+    <button id="scissors">&#x270c;</button>
+</div>
+<p id="result"></p>
+<p id="scores">
+    Your score: <span id="user-score">0</span>
+    Computer score: <span id="computer-score">0</span>
+</p>
+
+<script>
+    const buttons = document.querySelectorAll("button");
+
+const resultEl = document.getElementById("result");
+
+const playerScoreEl = document.getElementById("user-score");
+
+const computerScoreEl = document.getElementById("computer-score");
+
+let playerScore = 0;
+let computerScore = 0;
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const result = playRound(button.id, computerPlay());
+    resultEl.textContent = result;
+    
+  });
+});
+
+function computerPlay() {
+  const choices = ["rock", "paper", "scissors"];
+  const randomChoice = Math.floor(Math.random() * choices.length);
+  return choices[randomChoice];
+}
+
+function playRound(playerSelection, computerSelection) {
+  if (playerSelection === computerSelection) {
+    return "It's a tie!";
+  } else if (
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "paper" && computerSelection === "rock") ||
+    (playerSelection === "scissors" && computerSelection === "paper")
+  ) {
+    playerScore++;
+    playerScoreEl.textContent = playerScore;
+    return "You win! " + playerSelection + " beats " + computerSelection;
+  } else {
+    computerScore++;
+    computerScoreEl.textContent = computerScore;
+    return "You lose! " + computerSelection + " beats " + playerSelection;
+  }
+}
+
+</script>
+
+
+
+<div class="container">
+    <div class="progress-container">
+      <hr class="progress-bar-back" />
+      <hr class="progress-bar-front" />
+      <div class="step checked">
+        <i class="fas fa-check"></i>
+        <small>Start</small>
+      </div>
+      <div class="step">
+        <i class="fas fa-times"></i>
+      </div>
+      <div class="step">
+        <i class="fas fa-times"></i>
+      </div>
+      <div class="step">
+        <i class="fas fa-times"></i>
+      </div>
+      <div class="step">
+        <i class="fas fa-times"></i>
+      </div>
+    </div>
+    <button class="btn" id="prev" disabled>
+      <i class="fas fa-arrow-left"></i>
+    </button>
+    <button class="btn" id="next"><i class="fas fa-arrow-right"></i></button>
+  </div>
+  
+
+<script>
+const nextEl = document.getElementById("next");
+    const prevEl = document.getElementById("prev");
+    
+    const progressEl = document.querySelector(".progress-bar-front");
+    
+    const stepsEl = document.querySelectorAll(".step");
+    
+    let currentChecked = 1;
+    
+    nextEl.addEventListener("click", () => {
+      currentChecked++;
+      if (currentChecked > stepsEl.length) {
+        currentChecked = stepsEl.length;
+      }
+      updateStepProgress();
+    });
+    
+    prevEl.addEventListener("click", () => {
+      currentChecked--;
+      if (currentChecked < 1) {
+        currentChecked = 1;
+      }
+      updateStepProgress();
+    });
+    
+    function updateStepProgress() {
+      stepsEl.forEach((stepEl, idx) => {
+        if (idx < currentChecked) {
+          stepEl.classList.add("checked");
+          stepEl.innerHTML = `
+          <i class="fas fa-check"></i>
+          <small>${
+            idx === 0
+              ? "Start"
+              : idx === stepsEl.length - 1
+              ? "Final"
+              : "Step " + idx
+          }</small>
+          `;
+        } else {
+          stepEl.classList.remove("checked");
+          stepEl.innerHTML = `
+          <i class="fas fa-times"></i>
+          `;
+        }
+      });
+    
+      const checkedNumber = document.querySelectorAll(".checked");
+    
+      progressEl.style.width =
+        ((checkedNumber.length - 1) / (stepsEl.length - 1)) * 100 + "%";
+    
+      if (currentChecked === 1) {
+        prevEl.disabled = true;
+      } else if (currentChecked === stepsEl.length) {
+        nextEl.disabled = true;
+      } else {
+        prevEl.disabled = false;
+        nextEl.disabled = false;
+      }
+    }
+    
+     </script>
+                  </section> 
+   
+    <!-- Contact Section -->  
+       <section id="contact" class="contact">     
+            <div class="contact-form">            
+                 <h2>Contact Me</h2>         
+                     <form id="contactForm" action="#" method="POST">        
+                                 <input type="text" name="name" placeholder="Your Name" required>   
+                                               <input type="email" name="email" placeholder="Your Email" required> 
+                                                               <textarea name="message" placeholder="Your Message" required></textarea>     
+                                                                           <button type="submit">Send Message</button> 
+                                                                                    </form>    
+                                                                                     </div>   
+                                                                                      </section>
+                                                                                       <footer> 
+                                                                                            <p><hr>
+                                                                                                Copyright Reserved Terms Privacy Contact Security <br> 
+                                                                                                @2024 JOYHUB, Inc. <br>
+                                                                                                <a href="mailto:joykalu013@gmail.com">joykalu013@gmail.com</a>
+                                                                                            </p>
+                                                                                         </footer>  
+                                                                                            <!-- JavaScript -->  
+                                                                                               <script src="tests.js"></script>
+                                                                                             </body>
+                                                                                            > 
+ 
